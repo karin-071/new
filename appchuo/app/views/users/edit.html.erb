@@ -1,0 +1,78 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ユーザー編集
+      </h1>
+    </div>
+  </div>
+</section>
+
+
+<% if @user.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_for @user do |f| %>
+          <div class="field">
+            <%= f.label :name, "ユーザー名", class: "label" %>
+            <%= f.text_field :name, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :mail, "メールアドレス", class: "label" %>
+            <%= f.email_field :mail, class: "input" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :faculty, "学部", class: "label" %>
+            <%= f.text_area :faculty, class: "input" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :department, "学科", class: "label" %>
+            <%= f.text_area :department, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :hobby, "趣味", class: "label" %>
+            <%= f.text_area :hobby, class: "textarea" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :birthplace, "出生地", class: "label" %>
+            <%= f.text_area :birthplace, class: "input" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :address, "住んでいるところ", class: "label" %>
+            <%= f.text_area :address, class: "textarea" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :introduction, "自己紹介", class: "label" %>
+            <%= f.text_area :introduction, class: "textarea" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :image, "画像", class: "label" %>
+            <%= f.attachment_field :image, class: "input" %>
+          </div>
+
+          <%= f.submit "更新", class: "button is-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</sec
