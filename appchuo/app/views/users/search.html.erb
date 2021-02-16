@@ -1,0 +1,18 @@
+<h1>友達検索</h1>
+<%= form_tag(users_path,:method => 'get') do %>
+<ul>
+    <li>
+    <p>学部</p>
+        <%= text_field_tag :search %>
+    </li>
+    <li>
+    <p>出身地</p>
+        <%= text_field_tag :search %>
+    </li>
+    <li>
+    <p>趣味</p>
+        <%= text_field_tag :search %>
+    </li>
+</ul>
+  <%= submit_tag '検索', :name => nil %>
+<% end %>
