@@ -10,15 +10,18 @@ class UsersController < ApplicationController
     @users = User.all
 
   end
+  
   def show
     @user = User.find(params[:id])
   end
+  
   def edit
     @user = User.find(params[:id])
     if @user != current_user
         redirect_to user_path(current_user), alert: "不正なアクセスです。"
     end
   end
+  
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -29,6 +32,8 @@ class UsersController < ApplicationController
   end
   # 検索用
   def search
+    #追記
+    @users = User.search(params[:search])
   end
   # 検索用
 
@@ -36,13 +41,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :faculty, :department, :hobby, :birthplace, :address, :introduction, :image)
   end
-  
-  # 検索用
-  # def search_params
-  #     params.require(:q).permit(:name_cont)
-  # end
-  # def set_q
-  #   # @users = @q.result.paginate(page: params[:page])
-  # end
-# 　検索用
 end
