@@ -5,8 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :image
   
-  # 検索用
-  # def User.search(search)
-  #   User.where(['name LIKE ?', "%#{search}%"])
-  # end
+  #追記
+  def self.search(search)
+      if search
+        User.where(['content LIKE ?', "%#{search}%"])
+      else
+        User.all
+      end
+  end
+  
 end
